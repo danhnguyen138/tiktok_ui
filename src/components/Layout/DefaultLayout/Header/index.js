@@ -1,12 +1,15 @@
 import {useState, useEffect} from 'react';
-import classNames from 'classnames/bind';
-import styles from './Header.module.scss'
-import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
+import classNames from 'classnames/bind';
+
+
+import styles from './Header.module.scss'
+import images from '~/assets/images';
 import {Wrapper as PopperWrapper} from "~/components/Layout/Popper";
 import AccountItem from '~/components/SearchAccountItem';
+import Button from '~/components/Button';
 // import 'tippy.js/dist/tippy.css';
 const cx=classNames.bind(styles)
 function Header() {
@@ -59,7 +62,9 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('action')}>
-                    <input placeholder='HEllo world'/>
+                    <Button text >+  Upload</Button>
+                    <Button primary >Login</Button>
+                    
                 </div>
            </div>
         </header>

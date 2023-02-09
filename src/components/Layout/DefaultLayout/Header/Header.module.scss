@@ -19,7 +19,9 @@
 .logo{
     
 }
-
+.search, .search-result{
+    width: 361px;
+}
 .search{
     position: relative;
     width:361px;
@@ -80,7 +82,15 @@
         background-color: rgba(22,24,35,0.06);
     }
 }
-
+.search-result{
+    .search-title{
+        color: rgba(22,24,35,0.5);
+        font-weight: 600;
+        line-height: 20px;
+        font-size: 14px;
+        padding: 5px 12px;
+    }
+}
 .action{
 
 }

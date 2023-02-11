@@ -6,18 +6,16 @@ import styles from "./Button.module.scss";
  * [className]:className
  * } */
 const cx = classNames.bind(styles)
-function Button({ to, href, children, text=false,disable=false, primary = false, outline = false, size = "medium", onClick, ...passProps }) {
+function Button({ to, href, children, text=false,disable=false, primary = false, outline = false, size = "medium", disabled, className, leftIcon, rightIcon, onClick,...passProps }) {
     let Comp = 'button';
     // const small=1
     const buttonStyleList={
-        primary,outline,text,disable
+        primary,outline,text,disable, [className]:className
     }
     let classes = cx('wrapper', {
         ...buttonStyleList,
         [size]:size
     })
-    
-
     const props = {
         onClick,
         ...passProps
@@ -29,10 +27,22 @@ function Button({ to, href, children, text=false,disable=false, primary = false,
         props.href = href
         Comp = 'a';
     }
+    if (disabled) {
+        Object.keys(props).forEach((key) => {
+            if (key.startsWith('on') && typeof props[key] === 'function') {
+                delete props[key];
+            }
+        });
+    }
+
+    
+   
 
     return (
         <Comp className={classes} {...props}>
-            <span>{children}</span>
+            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+            <span className={cx('title')}>{children}</span>
+            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
         </Comp>
     );
 }
